@@ -1,12 +1,15 @@
 
 import { Link, useNavigate } from "react-router-dom";
 import { Toast } from "./Toast";
+import { useContext } from "react";
+import { AuthContext } from "../../auth/context/AuthContex";
 
 export const Navbar = ({ rutas , usuario}) => {
-
+    const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const onLogout = () => {
+        logout();
        navigate("/login", {replace:true})
     }
     return (
